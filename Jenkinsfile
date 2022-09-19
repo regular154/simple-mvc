@@ -7,14 +7,13 @@ pipeline {
         stage('test') {
             steps {
                 sh 'mvn test'
-                echo 'echo "Hello World"'
+                echo "Hello ${NAME}"
             }
         }
     }
     post {
         always {
             echo 'This will always run'
-            echo "name is ${NAME}"
         }
         success {
             echo 'This will run only if successful'
