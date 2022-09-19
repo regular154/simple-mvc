@@ -1,5 +1,8 @@
 pipeline {
     agent { docker { image 'maven:3.8.4-openjdk-11-slim' } }
+    environment {
+        NAME = 'John'
+    }
     stages {
         stage('test') {
             steps {
@@ -11,6 +14,7 @@ pipeline {
     post {
         always {
             echo 'This will always run'
+            echo "name is ${NAME}"
         }
         success {
             echo 'This will run only if successful'
